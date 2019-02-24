@@ -4,20 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
-    <title>Carousel Template · Bootstrap</title>
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
+    <meta name="author" content="Miroslav Zadoyan, zadoyan.miroslav@gmail.com">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>ZNTU Cisco Academy</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   </head>
   <body>
-
 @include('layout.header')
-<main role="main">
 
-  @yield('content')
-@include('layout.footer')
-  
+<main role="main">
+@yield('content')
 </main>
-<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+@include('layout.footer')
+<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a> 
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/scripts.js')}}"></script>
+  </body>
 </html>
