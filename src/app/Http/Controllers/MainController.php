@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Post;
 class MainController extends Controller
 {
     function index(){
-        return view('pages.main');
+        $query = Post::orderBy('id', 'asc')
+            ->paginate(20);
+        $data = [
+            "posts" => $query,
+        ];
+
+        return view('pages.main')->with($data);
     }
 }

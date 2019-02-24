@@ -10661,7 +10661,7 @@ a.text-dark:focus {
 
 #return-to-top {
   position: fixed;
-  bottom: 20px;
+  bottom: 50px;
   right: 20px;
   background: black;
   background: rgba(0, 0, 0, 0.7);
@@ -10750,5 +10750,64 @@ footer p {
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.pagination-block {
+  justify-content: center;
+  display: flex;
+}
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.page-item {
+  font-size: 28px;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #343a40;
+  border-color: #272727;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 10px 17px;
+  margin-left: 0;
+  line-height: 1.25;
+  color: #343a40;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+  background-color: #a5a5a5;
+  color: white;
+}
+
+.footer-main {
+  background: black;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 21px;
+}
+
+.footer-link {
+  text-decoration: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-link:hover {
+  text-decoration: none;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.822);
 }
 

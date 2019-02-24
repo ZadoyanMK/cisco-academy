@@ -1,0 +1,19 @@
+  
+.footer-main{
+    background: black;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 21px;
+  }
+
+.footer-link{
+    text-decoration: none;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.5);
+}
+.footer-link:hover{
+    text-decoration: none;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.822);
+}
