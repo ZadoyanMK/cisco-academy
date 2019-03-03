@@ -26,6 +26,17 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::bind('post', function($post, $route){
+            $query = \App\Models\Post::find($post);
+            if ($query){
+                return $query;
+            }
+            else
+            {
+                throw (new ModelNotFoundException)->setModel(Post::class);
+            }
+        });
     }
 
     /**

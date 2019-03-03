@@ -18,7 +18,12 @@
 @yield('content')
 </main>
 @include('layout.footer')
-<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a> 
+<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+<form class="form-inline mt-2 mt-md-0">
+    <button id="add-new-post" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        <i class="plus-icon"></i></button>
+</form>
+
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/scripts.js')}}"></script>
   </body>

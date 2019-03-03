@@ -8,7 +8,7 @@ class MainController extends Controller
 {
     function index(){
         $query = Post::orderBy('id', 'asc')
-            ->paginate(20);
+            ->paginate(5);
         $data = [
             "posts" => $query,
         ];

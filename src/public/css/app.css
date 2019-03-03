@@ -10693,6 +10693,30 @@ a.text-dark:focus {
   top: 5px;
 }
 
+#add-new-post {
+  position: fixed;
+  bottom: 150px;
+  right: 20px;
+  background: black;
+  background: rgba(0, 0, 0, 0.7);
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-decoration: none;
+  border-radius: 35px;
+  transition: all 0.3s ease;
+}
+
+#add-new-post i {
+  color: #fff;
+  margin: 0;
+  position: relative;
+  left: 16px;
+  top: 13px;
+  font-size: 19px;
+  transition: all 0.3s ease;
+}
+
 .jumbotron {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -10757,6 +10781,11 @@ footer p {
   display: flex;
 }
 
+.pagination-admin-block {
+  justify-content: center;
+  display: flex;
+}
+
 .pagination {
   display: flex;
   padding-left: 0;
@@ -10764,8 +10793,12 @@ footer p {
   border-radius: 0.25rem;
 }
 
-.page-item {
+.pagination-block .page-item {
   font-size: 28px;
+}
+
+.pagination-admin-block .page-item {
+  font-size: 15px;
 }
 
 .page-item.active .page-link {
@@ -10796,7 +10829,7 @@ footer p {
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 21px;
+  font-size: 19px;
 }
 
 .footer-link {
@@ -10809,5 +10842,9 @@ footer p {
   text-decoration: none;
   background-color: transparent;
   color: rgba(255, 255, 255, 0.822);
+}
+
+.plus-icon {
+  background: url("/icons/add-icon.png");
 }
 
