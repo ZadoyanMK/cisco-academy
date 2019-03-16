@@ -1,7 +1,8 @@
-version: '3'
+version: '3.1'
 
 services:
   python: &python
+    container_name: python_container
     build:
       context: .
       dockerfile: ./docker/dev/Dockerfile
@@ -18,28 +19,26 @@ services:
       - postgres
       - rabbitmq
       - celery_worker
-    restart: unless-stopped
+    # restart: unless-stopped
   postgres:
     container_name: postgres_container
-    image: postgres
+    image: postgres:11.2
+    restart: always
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wf23hdf9gfh}
+      POSTGRES_PASSWORD: adminpassword
       PGDATA: /data/postgres
-      # POSTGRES_DB: ${POSTGRES_DB:-cisco_blog}
     volumes:
        - postgres:/data/postgres
     ports:
       - "5432:5432"
     networks:
       - cisco-zntu
-    restart: unless-stopped
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@ciscozntu.edu.ua}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-adminpassword}
     volumes:
        - pgadmin:/root/.pgadmin
     ports:
@@ -48,7 +47,7 @@ services:
       - cisco-zntu
     restart: unless-stopped
   rabbitmq:
-    container_name: dev_rabbit
+    container_name: rabbitmq_container
     hostname: rabbit
     image: rabbitmq:3.6.6-management
     environment:
@@ -59,7 +58,9 @@ services:
       - "15672:15672"
     networks:
       - cisco-zntu
+    restart: unless-stopped
   celery_worker:
+    container_name: celery_container
     <<: *python
     # command: celery -A tickets worker --loglevel=info
     ports: []
