@@ -1,9 +1,9 @@
 FROM python:3.7-slim
 MAINTAINER zadoyan_mk@localhost
 
-COPY ./app /app
+COPY ./src /src
 
-WORKDIR /app
+WORKDIR /src
 
 RUN pip install --no-cache-dir -r requirements/dev.txt
 
