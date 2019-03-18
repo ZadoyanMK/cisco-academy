@@ -1,24 +1,24 @@
 version: '3.1'
 
 services:
-  python: &python
-    container_name: python_container
-    build:
-      context: .
-      dockerfile: ./docker/dev/Dockerfile
-    environment:
-    - PYTHONUNBUFFERED=1
-    volumes:
-      - ./src:/src
-    ports:
-      - 8000:8000
-    command: python manage.py runserver 0.0.0.0:8000
-    networks:
-      - cisco-zntu
-    depends_on:
-      - postgres
-      - rabbitmq
-      - celery_worker
+  # python: &python
+  #   container_name: python_container
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/dev/Dockerfile
+  #   environment:
+  #   - PYTHONUNBUFFERED=1
+  #   volumes:
+  #     - ./src:/src
+  #   ports:
+  #     - 8000:8000
+  #   command: python manage.py runserver 0.0.0.0:8000
+  #   networks:
+  #     - cisco-zntu
+  #   depends_on:
+  #     - postgres
+  #     - rabbitmq
+  #     - celery_worker
     # restart: unless-stopped
   postgres:
     container_name: postgres_container
@@ -45,7 +45,7 @@ services:
       - "${PGADMIN_PORT:-5050}:80"
     networks:
       - cisco-zntu
-    restart: unless-stopped
+#    restart: unless-stopped
   rabbitmq:
     container_name: rabbitmq_container
     hostname: rabbit
@@ -58,18 +58,18 @@ services:
       - "15672:15672"
     networks:
       - cisco-zntu
-    restart: unless-stopped
-  celery_worker:
-    container_name: celery_container
-    <<: *python
-    # command: celery -A tickets worker --loglevel=info
-    ports: []
-    networks:
-      - cisco-zntu
-    depends_on:
-      - rabbitmq
-      - postgres
-    restart: unless-stopped
+#    restart: unless-stopped
+  # celery_worker:
+  #   container_name: celery_container
+  #   <<: *python
+  #   # command: celery -A tickets worker --loglevel=info
+  #   ports: []
+  #   networks:
+  #     - cisco-zntu
+  #   depends_on:
+  #     - rabbitmq
+  #     - postgres
+  #   restart: unless-stopped
 
 networks:
   cisco-zntu:
