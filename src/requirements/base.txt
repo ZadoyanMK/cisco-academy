@@ -3,3 +3,4 @@ psycopg2-binary
 celery
 django-celery-results
 Pillow
+django-ckeditor

@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'debug_toolbar',
-    'posts',
+    'app',
+    'ckeditor_uploader',
+    'ckeditor',
+
 ]
 
 MIDDLEWARE = [
@@ -132,3 +135,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
+
+
+CKEDITOR_BASEPATH = "static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "posts/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_THUMBNAIL_SIZE = (300, 300)
+CKEDITOR_IMAGE_QUALITY = 40
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_ALLOW_NONIMAGE_FILES = True
