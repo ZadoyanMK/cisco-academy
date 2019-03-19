@@ -7,4 +7,3 @@ from .models import *
 admin.site.register(Post)
 
 admin.site.site_header = 'Cisco Academy Admin Panel'
-# admin.site.index_template = 'admin/custom-index.html'

@@ -12,7 +12,12 @@
 {{user.username}}
 {{test}}
 {% for post in posts %}
-        {{ post.name }}
+<p>
+    <a href="/post/{{post.id}}">{{ post.name }}</a>
+    <!--{{ post.id }}-->
+
+</p>
+
     {% endfor %}
 </body>
 </html>

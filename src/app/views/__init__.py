@@ -5,5 +5,5 @@ from .PostPage import PostPage
 
 __all__ = [
     'PageListView', 'UserLoginView', 'PostPage',
-    'logout_view',
+    'logout_view', 'send_mail'
 ]

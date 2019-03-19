@@ -135,13 +135,40 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'global_static/'
+STATIC_ROOT = 'static/'
 
+APPEND_SLASH = True
 
-CKEDITOR_BASEPATH = "global_static/ckeditor/ckeditor/"
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "posts/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_THUMBNAIL_SIZE = (300, 300)
 CKEDITOR_IMAGE_QUALITY = 40
 CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_ALLOW_NONIMAGE_FILES = True
+
+
+from celery.schedules import crontab
+
+# Other Celery settings
+
+CELERY_BROKER_URL = 'amqp://user:user@localhost:5672'
+CELERY_RESULT_BACKEND = 'amqp://user:user@localhost:5672'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Kiev'
+# CELERY_BEAT_SCHEDULE = {
+    # 'start_transporting': {
+    #         'task': 'main.tasks.start_transporting',
+    #         'schedule': 1.0, #crontab(minute=3, hour=22),
+    # },
+    # 'stop_transporting': {
+    #         'task': 'main.tasks.stop_transporting',
+    #         'schedule': 1.0,
+    # },
+    # 'search_vehicle': {
+    #         'task': 'main.tasks.search_vehicle',
+    #         'schedule': 1.0,
+    # },
+# }

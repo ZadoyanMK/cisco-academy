@@ -30,3 +30,6 @@ __pycache__/*
 
 .venv
 .venv/*
+
+global_static
+global_static/*
