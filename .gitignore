@@ -34,3 +34,5 @@ __pycache__/*
 global_static
 global_static/*
 
+docker-compose.yaml
+

@@ -11,12 +11,24 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from configparser import ConfigParser
+
+
+config = ConfigParser()
+config.read("_config/app_config.ini")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload')
 
 MEDIA_URL = "/upload/"
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
+
+APPEND_SLASH = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -89,10 +101,10 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'changeme',
-        'HOST': 'localhost',  # 'postgres',
+        'NAME': config.get('DB', 'name'),
+        'USER': config.get('DB', 'user'),
+        'PASSWORD': config.get('DB', 'pass'),
+        'HOST': config.get('DB', 'host'),
         'PORT': 5432,
     }
 }
@@ -130,16 +142,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
-
-APPEND_SLASH = True
-
-CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_BASEPATH = STATIC_URL + "/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "posts/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_THUMBNAIL_SIZE = (300, 300)
@@ -152,8 +155,8 @@ from celery.schedules import crontab
 
 # Other Celery settings
 
-CELERY_BROKER_URL = 'amqp://user:user@localhost:5672'
-CELERY_RESULT_BACKEND = 'amqp://user:user@localhost:5672'
+CELERY_BROKER_URL = config.get('RABBIT', 'url')
+CELERY_RESULT_BACKEND = config.get('RABBIT', 'url')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
@@ -176,7 +179,7 @@ CELERY_TIMEZONE = 'Europe/Kiev'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "example@gmail.com"
-EMAIL_HOST_PASSWORD = "changeme"
+EMAIL_HOST_USER = config.get("MAIL", "username")
+EMAIL_HOST_PASSWORD = config.get("MAIL", "password")
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
