@@ -11,6 +11,10 @@
 <a href="/logout/">Logout</a>
 {{user.username}}
 {{test}}
+
+<div>
+    <a href="/send/">Send</a>
+</div>
 {% for post in posts %}
 <p>
     <a href="/post/{{post.id}}">{{ post.name }}</a>

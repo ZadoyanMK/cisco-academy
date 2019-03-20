@@ -19,6 +19,7 @@ def send_message():
         'konzamir@gmail.com',
         ['konzamir@gmail.com'],
         fail_silently=False,
+
     )
 
     return 'Message was sent!'
