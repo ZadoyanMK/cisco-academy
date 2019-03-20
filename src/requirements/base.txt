@@ -4,3 +4,5 @@ celery
 django-celery-results
 Pillow
 django-ckeditor
+djangorestframework
+django-rest-knox

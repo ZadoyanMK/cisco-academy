@@ -36,3 +36,7 @@ global_static/*
 
 docker-compose.yaml
 
+.vscode
+.vscode/*
+
+package-lock.json

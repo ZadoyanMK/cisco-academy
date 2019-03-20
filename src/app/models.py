@@ -8,3 +8,5 @@ class Post(models.Model):
     main_image = models.ImageField(upload_to='posts/%Y/%m/%d/', null=True, blank=True, max_length=512)
     on_banner = models.BooleanField(default=False)
     description = RichTextUploadingField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+

@@ -7,6 +7,7 @@ from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^', include('frontend.urls')),
     url(r'^', include('app.urls')),
     url(r'^upload/(?P<path>.*)$', serve, {
             'document_root': settings.MEDIA_ROOT
