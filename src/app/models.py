@@ -10,3 +10,8 @@ class Post(models.Model):
     description = RichTextUploadingField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+
+class Course(models.Model):
+    name = models.CharField(max_length=128, default="")
+    description = RichTextUploadingField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
