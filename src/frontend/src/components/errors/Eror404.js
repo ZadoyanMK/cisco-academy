@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
-export class Form extends Component {
+export default class Eror404 extends Component {
   render() {
     return (
       <div>
-        <h1>Add post form</h1>
+        <h1>404 Error</h1>
       </div>
     )
   }
 }
-
-export default Form

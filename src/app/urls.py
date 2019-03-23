@@ -5,7 +5,7 @@ from django.conf.urls import url, include
 from . import views
 
 from rest_framework import routers
-from .api import PostViewSet
+from .api import PostViewSet, SendMessage
 
 
 urlpatterns = [
@@ -14,10 +14,12 @@ urlpatterns = [
     # url(r'^send/$', views.send, name='send-mail'),
     # url(r'^$', views.PageListView.as_view(), name='posts-list'),
     # url(r'^post/(?P<pk>[0-9])/$', views.PostPage.as_view(), name="new-post"),
+    url(r'^send-message/$', SendMessage.as_view(), name='send-message')
 ]
 
 
 router = routers.DefaultRouter()
 router.register('api/posts', PostViewSet, 'posts-api')
+# router.register('api/send-message', SendMessage, 'send-message')
 
 urlpatterns += router.urls

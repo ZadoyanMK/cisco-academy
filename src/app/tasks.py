@@ -5,10 +5,10 @@ from django.conf import settings
 
 
 @shared_task
-def send_message():
+def send_message(title="Title", description="Description"):
     send_mail(
-        'Subject here',
-        'Here is the message.',
+        title,
+        description,
         settings.EMAIL_HOST_USER,
         [settings.EMAIL_HOST_USER],
         fail_silently=False,

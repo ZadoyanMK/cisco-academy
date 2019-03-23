@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export class Header extends Component {
   render() {
@@ -17,9 +18,9 @@ export class Header extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="/">
               Cisco-academy
-            </a>
+            </Link>
           </div>
           {/* {isAuthenticated ? authLinks : guestLinks} */}
         </div>
