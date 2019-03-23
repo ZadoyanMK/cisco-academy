@@ -1,14 +1,17 @@
 import React, {Component, Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import {
-    HashRouter as Router,
     BrowserRouter,
     Route,
     Switch,
   } from "react-router-dom";
+
 import Header from './layout/Header'
 import Posts from './posts/Posts'
+import SendMessage from './layout/SendMessage';
 import PostDetails from './posts/PostDetails'
+import Courses from './courses/Courses';
+
 import PrivateRoute from './common/PrivateRoute'
 import { Provider } from 'react-redux';
 import store from '../store';
@@ -26,11 +29,14 @@ class App extends Component{
                 <Header />
                     <div className="container">
                     <Switch>
-                        <PrivateRoute exact path="/" component={Posts} />
-                        <PrivateRoute exact path="/post/:id/" component={PostDetails} />
+                        <Route exact path="/" component={Posts} />
+                        <Route exact path="/post/:id/" component={PostDetails} />
+                        <Route exact path="/courses/" component={Courses} />
+                        
                         <Route component={Error404} />
                     </Switch>
                     </div>
+                <SendMessage />
             </Fragment>
             </BrowserRouter>
             </Provider>

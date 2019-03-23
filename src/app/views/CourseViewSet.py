@@ -11,3 +11,15 @@ class CourseViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = CourseSerializer
+
+    # def list(self, request):
+    #     if len(self.queryset) > 0:
+    #         serializer = self.get_serializer(self.queryset, many=True)
+
+    #         return Response({
+    #             'data': serializer.data,
+    #         }, 200)
+    #     else:
+    #         return Response({
+    #             'data': [],
+    #         })

@@ -1,75 +1,48 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getPosts, isLoadng, setPageNotFound } from '../../actions/posts';
+import { getPosts } from '../../actions/posts';
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import Pagination from "react-js-pagination";
 
-export class Posts extends Component {
+class Posts extends Component {
 
   static propTypes = {
-    posts: PropTypes.array.isRequired
+    posts: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    itemsCountPerPage: PropTypes.number,
+    totalItemsCount: PropTypes.number,
   }
 
   constructor(props){
     super(props);
-    this.props.isLoadng(false);
+
     this.state = {
-      title: '',
-      description: ''
+      activePage: 1,
     };
 
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
-    this.handleChangeDescription = this.handleChangeDescription.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  
-  handleSubmit(event) {
-    // alert('A name was submitted: ' + this.state.value);
-
-    axios.post('/send-message/', {
-      title: this.state.title,
-      description: this.state.description
-    }, 
-    {
-      "Content-Type": "application/json"
-    })
-    .then((res) => {
-      console.log(res);
-    });
-    event.preventDefault();
-  }
-
-  handleChangeTitle(event) {
-    this.setState({title: event.target.value});
-  }
-  handleChangeDescription(event) {
-    this.setState({description: event.target.value});
+    
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
   
   componentDidMount(){
-    if (!this.props.isFetched) {
-      this.props.isLoadng(true);
-      this.props.setPageNotFound(false);
-      this.props.getPosts();
-    }
+    console.log(this.props)
+    this.props.getPosts(1);
+  }
+
+  handlePageChange(pageNumber) {
+    this.setState({activePage: pageNumber});
+    this.props.history.push(`/?page=${pageNumber}`);
+    this.props.getPosts(pageNumber);
   }
 
   render() {
+    if (this.props.isLoading){
+      return <h1>Loading...</h1>
+    }
     return (
       <Fragment>
         <h1>Posts page</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Title:
-            <input type="text" value={this.state.title} onChange={this.handleChangeTitle} />
-          </label>
-          <label>
-            Description:
-            <input type="text" value={this.state.description} onChange={this.handleChangeDescription} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -92,6 +65,13 @@ export class Posts extends Component {
             )) }
           </tbody>
         </table>
+          <Pagination
+          activePage={this.state.activePage}
+          itemsCountPerPage={this.props.itemsCountPerPage}
+          totalItemsCount={this.props.totalItemsCount}
+          
+          onChange={this.handlePageChange}
+        />
       </Fragment>
     )
   }
@@ -99,9 +79,11 @@ export class Posts extends Component {
 
 const mapStateToProps = state => ({
   posts: state.posts.posts,
-  isFetched: state.posts.isFetched
+  itemsCountPerPage: state.posts.pagination.per_page,
+  totalItemsCount: state.posts.pagination.total_count,
+  isLoading: state.posts.isLoading
 })
 
 export default connect(mapStateToProps, { 
-  getPosts, isLoadng, setPageNotFound
+  getPosts
 })(Posts);

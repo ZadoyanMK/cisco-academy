@@ -1,10 +1,9 @@
 import React from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { isLoadng } from '../../actions/posts';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const PrivateRoute = ({ component: Component, posts, isLoadng, ...rest}) => (
+const PrivateRoute = ({ component: Component, posts, ...rest}) => (
      <Route 
         {...rest}
         render={props => {
@@ -12,7 +11,7 @@ const PrivateRoute = ({ component: Component, posts, isLoadng, ...rest}) => (
             if (posts.isLoading){
                 return <h2>Loading...</h2>
             } else {
-            return <Component {...props} />;
+                return <Component {...props} />;
             }
         }}
     />
@@ -22,4 +21,4 @@ const mapToStateProps = state => ({
     posts: state.posts
 })
 
-export default  connect(mapToStateProps, { isLoadng })(PrivateRoute);
+export default  connect(mapToStateProps, {  })(PrivateRoute);

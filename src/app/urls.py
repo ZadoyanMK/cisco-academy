@@ -7,11 +7,11 @@ from .views import PostViewSet, SendMessageView, CourseViewSet
 
 
 urlpatterns = [
-    url(r'^send-message/$', SendMessageView.as_view(), name='send-message')
+    url(r'^send-message/$', SendMessageView.as_view(), name='api-send-message')
 ]
 
 router = routers.DefaultRouter()
 router.register('api/posts', PostViewSet, 'posts-api')
-router.register('api/courses', PostViewSet, 'courses-api')
+router.register('api/courses', CourseViewSet, 'courses-api')
 
 urlpatterns += router.urls

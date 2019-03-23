@@ -18,8 +18,11 @@ export class Header extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/" >
               Cisco-academy
+            </Link>
+            <Link className="navbar-link" to="/courses/" >
+              Courses list
             </Link>
           </div>
           {/* {isAuthenticated ? authLinks : guestLinks} */}

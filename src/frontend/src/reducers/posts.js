@@ -1,13 +1,13 @@
 import {
     GET_POSTS, GET_POST, 
-    IS_LOADING, IS_FETCHED, NOT_FOUND
+    IS_LOADING, NOT_FOUND
 } from '../actions/types.js';
 
 const initialState = {
     posts: [],
     postDetails: {},
-    isLoading: false,
-    isFetched: false,
+    pagination: {},
+    isLoading: true,
     notFoundPage: false,
 }
 
@@ -17,16 +17,13 @@ export default function(state=initialState, action) {
             return{
                 ...state,
                 isLoading: true,
-            }
-        case IS_FETCHED:
-            return{
-                ...state,
-                isFetched: action.payload,
+                notFoundPage: false,
             }
         case GET_POSTS:
             return {
                 ...state,
-                posts: action.payload,
+                posts: action.payload.data,
+                pagination: action.payload.pagination,
                 isLoading: false,
             };
         case GET_POST:
@@ -38,7 +35,7 @@ export default function(state=initialState, action) {
         case NOT_FOUND:
             return {
                 ...state,
-                notFoundPage: action.payload,
+                notFoundPage: true,
                 isLoading: false,
             };
         default:
