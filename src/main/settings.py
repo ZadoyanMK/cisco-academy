@@ -185,5 +185,4 @@ EMAIL_HOST_PASSWORD = config.get("MAIL", "password")
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 
-POSTS_PER_PAGE = 3
-COURSES_PER_PAGE = 50
+POSTS_PER_PAGE = 20

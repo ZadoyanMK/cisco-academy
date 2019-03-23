@@ -26,8 +26,9 @@ class Posts extends Component {
   }
   
   componentDidMount(){
-    console.log(this.props)
-    this.props.getPosts(1);
+    var urlParams = new URLSearchParams(window.location.search);
+    let page = urlParams.get('page');
+    this.props.getPosts(page);
   }
 
   handlePageChange(pageNumber) {
