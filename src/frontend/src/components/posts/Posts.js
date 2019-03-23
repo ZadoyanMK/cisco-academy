@@ -21,7 +21,6 @@ export class Posts extends Component {
 
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeDescription = this.handleChangeDescription.bind(this);
-    
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
@@ -75,7 +74,7 @@ export class Posts extends Component {
           <thead>
             <tr>
               <th>
-                Name of penis
+                Name
               </th>
               <th>
                 Description

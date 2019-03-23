@@ -1,25 +1,17 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-
-from . import views
-
 from rest_framework import routers
-from .api import PostViewSet, SendMessage
+
+from .views import PostViewSet, SendMessageView, CourseViewSet
 
 
 urlpatterns = [
-    # url(r'^login/$', views.UserLoginView.as_view(), name='form-login'),
-    # url(r'^logout/$', views.logout_view, name='form-logout'),
-    # url(r'^send/$', views.send, name='send-mail'),
-    # url(r'^$', views.PageListView.as_view(), name='posts-list'),
-    # url(r'^post/(?P<pk>[0-9])/$', views.PostPage.as_view(), name="new-post"),
-    url(r'^send-message/$', SendMessage.as_view(), name='send-message')
+    url(r'^send-message/$', SendMessageView.as_view(), name='send-message')
 ]
-
 
 router = routers.DefaultRouter()
 router.register('api/posts', PostViewSet, 'posts-api')
-# router.register('api/send-message', SendMessage, 'send-message')
+router.register('api/courses', PostViewSet, 'courses-api')
 
 urlpatterns += router.urls

@@ -8,19 +8,15 @@ import {
 export const getPosts = () => dispatch => {
     dispatch({ type: IS_LOADING });
 
-    axios.get('/api/posts/')
+    axios.get('/api/posts?page=1')
         .then(res => {
             dispatch({
                 type: GET_POSTS,
-                payload: res.data
+                payload: res.data.data
             })
         })
         .catch(err => {
             dispatch({ type: NOT_FOUND, payload: true });
-            // dispatch({
-            //     type: GET_POSTS,
-            //     payload: []
-            // })
         })
 }
 
@@ -32,15 +28,11 @@ export const getPostDetails = (id) => (dispatch, ownProps) => {
         .then(res => {
             dispatch({
                 type: GET_POST,
-                payload: res.data
+                payload: res.data.data
             })
         })
         .catch(err => {
             dispatch({ type: NOT_FOUND, payload: true });
-            // dispatch({
-            //     type: GET_POST,
-            //     payload: {}
-            // })
         })
 }
 
