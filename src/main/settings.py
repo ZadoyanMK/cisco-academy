@@ -39,7 +39,7 @@ SECRET_KEY = '7-5dq9c*7mdgg1u_b!v42p4-qlqh6^vi8t$x53=9*=dy1uf92&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -162,21 +162,6 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Kiev'
-# CELERY_BEAT_SCHEDULE = {
-    # 'start_transporting': {
-    #         'task': 'main.tasks.start_transporting',
-    #         'schedule': 1.0, #crontab(minute=3, hour=22),
-    # },
-    # 'stop_transporting': {
-    #         'task': 'main.tasks.stop_transporting',
-    #         'schedule': 1.0,
-    # },
-    # 'search_vehicle': {
-    #         'task': 'main.tasks.search_vehicle',
-    #         'schedule': 1.0,
-    # },
-# }
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True

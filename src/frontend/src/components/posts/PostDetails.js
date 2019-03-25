@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getPostDetails, setPostDetails } from '../../actions/posts';
+import { getPostDetails, setPostDetails, setIsOnDetailsPage } from '../../actions/posts';
+import { setLanguage } from '../../actions/global';
 import { Link } from "react-router-dom";
-import { Redirect } from 'react-router-dom';
 
 class PostDetails extends Component {
 
@@ -11,14 +11,26 @@ class PostDetails extends Component {
         posts: PropTypes.array.isRequired,
         postDetails: PropTypes.object,
         isLoading: PropTypes.bool.isRequired,
-        isNotFound: PropTypes.bool.isRequired,
+        lang: PropTypes.string
     }
 
     constructor(props){
         super(props);
     }
 
-    componentDidMount(){      
+    componentDidUpdate(prevProps){
+        if (this.props.lang != prevProps.lang){
+            let id = this.props.match.params.id;
+            this.props.history.push(`/${this.props.lang}/post/${id}`);
+            this.props.getPostDetails(id);
+        }
+    }
+
+    componentDidMount(){
+        this.props.setIsOnDetailsPage(true);
+
+        this.props.setLanguage(this.props.match.params.lang);
+
         let id = this.props.match.params.id;
         let posts = this.props.posts.filter(post => {
             return post.id == id
@@ -32,9 +44,6 @@ class PostDetails extends Component {
     }
 
     render() {
-        if (this.props.isNotFound){
-            return <Redirect to="/404/" />
-        }
         if (this.props.isLoading){
             return <h1>Loading...</h1>
         }
@@ -53,9 +62,9 @@ const mapStateToProps = state => ({
     posts: state.posts.posts,
     postDetails: state.posts.postDetails,
     isLoading: state.posts.isLoading,
-    isNotFound: state.posts.notFoundPage
+    lang: state.global.language,
 })
   
 export default connect(mapStateToProps, { 
-    getPostDetails, setPostDetails
+    getPostDetails, setPostDetails, setLanguage, setIsOnDetailsPage
 })(PostDetails);

@@ -16,9 +16,10 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     pagination_class = CustomLimitOffsetPagination
 
-    def list(self, request):
+    def list(self, request, lang=Post.EN_LANG):
+        print()
         queryset = self.paginate_queryset(
-            queryset=Post.objects.all()
+            queryset=Post.objects.filter(language=lang)
         )
         serializer_data = self.get_serializer(queryset, many=True).data
 
@@ -30,8 +31,8 @@ class PostViewSet(viewsets.ModelViewSet):
             }
         })
 
-    def retrieve(self, request, pk=None):
-        data = Post.objects.filter(id=int(pk))
+    def retrieve(self, request, lang=Post.EN_LANG, pk=None):
+        data = Post.objects.filter(id=int(pk), language=lang)
 
         if (data):
             serializer = self.get_serializer(data.first(), many=False)

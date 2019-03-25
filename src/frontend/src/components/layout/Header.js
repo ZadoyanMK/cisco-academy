@@ -1,11 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setLanguage } from '../../actions/global'
+import LanguageButtons from '../common/LanguageButtons';
 
 export class Header extends Component {
+  constructor(props){
+    super(props);
+
+  }
   render() {
     return (
+      <Fragment>
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
+          <Link className="navbar-brand" to={"/" + this.props.lang + "/"} >
+              Cisco-academy 
+            </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -18,18 +29,26 @@ export class Header extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link className="navbar-brand" to="/" >
-              Cisco-academy
-            </Link>
-            <Link className="navbar-link" to="/courses/" >
+            <Link className="navbar-link" to={"/" + this.props.lang + "/courses/"} >
               Courses list
             </Link>
+            {(() => {
+              if (!this.props.isOnPage){
+                return <LanguageButtons />
+              }
+            })()}
+            
           </div>
-          {/* {isAuthenticated ? authLinks : guestLinks} */}
         </div>
       </nav>
+      </Fragment>
     )
   }
 }
 
-export default Header
+const mapStateToProps = state => ({
+  lang: state.global.language,
+  isOnPage: state.posts.isOnPage
+});
+
+export default connect(mapStateToProps, { setLanguage })(Header);

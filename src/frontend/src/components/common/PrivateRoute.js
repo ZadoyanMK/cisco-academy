@@ -3,13 +3,13 @@ import {Route, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 
-const PrivateRoute = ({ component: Component, posts, ...rest}) => (
+const PrivateRoute = ({ component: Component, global, ...rest}) => (
      <Route 
         {...rest}
         render={props => {
             
-            if (posts.isLoading){
-                return <h2>Loading...</h2>
+            if (global.notFound){
+                return <Redirect to='/404/' />
             } else {
                 return <Component {...props} />;
             }
@@ -18,7 +18,7 @@ const PrivateRoute = ({ component: Component, posts, ...rest}) => (
 );
 
 const mapToStateProps = state => ({
-    posts: state.posts
+    global: state.global
 })
 
-export default  connect(mapToStateProps, {  })(PrivateRoute);
+export default  connect(mapToStateProps)(PrivateRoute);

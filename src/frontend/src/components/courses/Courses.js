@@ -2,15 +2,25 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCourses } from '../../actions/courses';
+import { setIsOnDetailsPage } from '../../actions/posts';
+import { setLanguage } from '../../actions/global';
+
 import { Link } from "react-router-dom";
 
 class Courses extends Component {
+
   static propTypes = {
     courses: PropTypes.array.isRequired,
     isLoading: PropTypes.bool.isRequired,
   }
 
+  constructor(props){
+    super(props);
+  }
+
   componentDidMount(){
+      this.props.setIsOnDetailsPage(false);
+      this.props.setLanguage(this.props.match.params.lang);
       this.props.getCourses();
   }
 
@@ -56,4 +66,6 @@ const mapStateToProps = state => ({
     isLoading: state.courses.isLoading
 });
 
-export default connect(mapStateToProps, { getCourses })(Courses);
+export default connect(mapStateToProps, { 
+  getCourses, setIsOnDetailsPage, setLanguage
+})(Courses);

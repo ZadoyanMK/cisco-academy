@@ -11,3 +11,12 @@ class CourseViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = CourseSerializer
+
+    def list(self, request, lang=Course.EN_LANG):
+
+        queryset=Course.objects.filter(language=lang)
+        serializer_data = self.get_serializer(queryset, many=True).data
+
+        return Response({
+            'data': serializer_data,
+        })

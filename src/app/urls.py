@@ -11,7 +11,7 @@ urlpatterns = [
 ]
 
 router = routers.DefaultRouter()
-router.register('api/posts', PostViewSet, 'posts-api')
-router.register('api/courses', CourseViewSet, 'courses-api')
+router.register(r'api/(?P<lang>[a-z]{2})/posts', PostViewSet, 'posts-api')
+router.register(r'api/(?P<lang>[a-z]{2})/courses', CourseViewSet, 'courses-api')
 
 urlpatterns += router.urls

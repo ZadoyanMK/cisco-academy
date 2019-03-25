@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux';
+import { setNotFound } from '../../actions/global';
 
-export default class Eror404 extends Component {
+export class Eror404 extends Component {
+  componentDidMount(){
+    this.props.setNotFound(false);
+    console.log('on 404')
+  }
   render() {
     return (
       <div>
@@ -9,3 +15,9 @@ export default class Eror404 extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, {setNotFound})(Eror404);

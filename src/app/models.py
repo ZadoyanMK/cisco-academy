@@ -10,8 +10,24 @@ class Post(models.Model):
     description = RichTextUploadingField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    EN_LANG = 'en'
+    RU_LANG = 'ru'
+    LANGUAGES = (
+        (EN_LANG, 'English'),
+        (RU_LANG, 'Russian'),
+    )
+    language = models.CharField(choices=LANGUAGES, default=EN_LANG, max_length=3)
+
 
 class Course(models.Model):
     name = models.CharField(max_length=128, default="")
     description = RichTextUploadingField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    EN_LANG = 'en'
+    RU_LANG = 'ru'
+    LANGUAGES = (
+        (EN_LANG, 'English'),
+        (RU_LANG, 'Russian'),
+    )
+    language = models.CharField(choices=LANGUAGES, default=EN_LANG, max_length=3)

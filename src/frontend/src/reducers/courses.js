@@ -16,7 +16,7 @@ export default function(state=initialState, action) {
             return{
                 ...state,
                 isLoading: false,
-                courses: action.payload
+                courses: action.payload.data
             };
         default:
             return state;

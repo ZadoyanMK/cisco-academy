@@ -2,5 +2,8 @@ export const GET_POSTS = "GET_POSTS";
 export const GET_POST = "GET_POST";
 export const IS_LOADING = "IS_LOADING";
 export const NOT_FOUND = "NOT_FOUND";
-
+export const IS_ON_DETAILS_PAGE = "IS_ON_DETAILS_PAGE";
 export const GET_COURSES = "GET_COURSES";
+export const ERROR_MESSAGE = "ERR_MESSAGE";
+export const SUCCESS_MESSAGE = "SUCCESS_MESSAGE";
+export const SET_LANGUAGE = "SET_LANGUAGE";
