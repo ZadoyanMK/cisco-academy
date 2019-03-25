@@ -11,12 +11,12 @@ import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from "react-alert-template-basic";
 
 import Header from './layout/Header'
-import Alerts from './layout/Alerts'
-import Posts from './posts/Posts'
-import SendMessage from './layout/SendMessage';
-import PostDetails from './posts/PostDetails'
-import Courses from './courses/Courses';
-import Error404 from './errors/Eror404';
+import Alerts from './components/Alerts'
+import Posts from './pages/Posts'
+import SendMessage from './components/SendMessage';
+import PostDetails from './pages/PostDetails'
+import Courses from './pages/Courses';
+import Error404 from './pages/Eror404';
 
 import PrivateRoute from './common/PrivateRoute'
 import { Provider } from 'react-redux';

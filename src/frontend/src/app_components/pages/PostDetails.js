@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getPostDetails, setPostDetails, setIsOnDetailsPage } from '../../actions/posts';
 import { setLanguage } from '../../actions/global';
 import { Link } from "react-router-dom";
+import Loading from '../components/Loading';
 
 class PostDetails extends Component {
 
@@ -23,7 +24,7 @@ class PostDetails extends Component {
             let id = this.props.match.params.id;
             this.props.history.push(`/${this.props.lang}/post/${id}`);
             this.props.getPostDetails(id);
-        }
+        }   
     }
 
     componentDidMount(){
@@ -45,11 +46,10 @@ class PostDetails extends Component {
 
     render() {
         if (this.props.isLoading){
-            return <h1>Loading...</h1>
+            return <Loading />
         }
         return (
         <Fragment>
-            <Link to="/">Home</Link>
             <p>
                 {this.props.postDetails.name}
             </p>

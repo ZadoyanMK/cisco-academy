@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPosts, setIsOnDetailsPage } from '../../actions/posts';
 import { setLanguage } from '../../actions/global';
-
+import Loading from '../components/Loading';
 import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
 
@@ -51,34 +51,22 @@ class Posts extends Component {
 
   render() {
     if (this.props.isLoading){
-      return <h1>Loading...</h1>
+      return <Loading />
     }
     return (
       <Fragment>
         <h1>Posts page</h1>
         
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Description
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+
             { this.props.posts.map(post => (
-              <tr key={post.id}>
-                <td>
+              <div key={post.id}>
+                <p>
                 <Link to={`post/${post.id}`}> {post.name} </Link>
-                </td>
-                <td dangerouslySetInnerHTML={{__html: post.description}} />
-              </tr>
+                </p>
+                <div dangerouslySetInnerHTML={{__html: post.description}} />
+              </div>
             )) }
-          </tbody>
-        </table>
+
         
         <Pagination
           activePage={this.state.activePage}

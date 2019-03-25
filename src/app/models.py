@@ -9,6 +9,7 @@ class Post(models.Model):
     on_banner = models.BooleanField(default=False)
     description = RichTextUploadingField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    preview = RichTextUploadingField(null=True, blank=True)
 
     EN_LANG = 'en'
     RU_LANG = 'ru'
@@ -23,7 +24,8 @@ class Course(models.Model):
     name = models.CharField(max_length=128, default="")
     description = RichTextUploadingField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    preview = RichTextUploadingField(null=True, blank=True)
+    
     EN_LANG = 'en'
     RU_LANG = 'ru'
     LANGUAGES = (

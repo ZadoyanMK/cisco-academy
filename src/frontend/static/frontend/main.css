@@ -1,0 +1,12 @@
+.submit-button > span {
+  color: #b40101; }
+
+.open-mess-modal {
+  position: absolute;
+  right: 10px;
+  top: 80%; }
+
+.modal-title {
+  background: #161616; }
+  .modal-title h2 {
+    color: white; }

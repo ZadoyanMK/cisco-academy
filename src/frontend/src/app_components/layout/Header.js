@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setLanguage } from '../../actions/global'
-import LanguageButtons from '../common/LanguageButtons';
+import LanguageButtons from '../components/LanguageButtons';
 
 export class Header extends Component {
   constructor(props){

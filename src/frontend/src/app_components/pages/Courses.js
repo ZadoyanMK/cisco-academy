@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getCourses } from '../../actions/courses';
 import { setIsOnDetailsPage } from '../../actions/posts';
 import { setLanguage } from '../../actions/global';
-
+import Loading from '../components/Loading';
 import { Link } from "react-router-dom";
 
 class Courses extends Component {
@@ -12,6 +12,7 @@ class Courses extends Component {
   static propTypes = {
     courses: PropTypes.array.isRequired,
     isLoading: PropTypes.bool.isRequired,
+    lang: PropTypes.string.isRequired
   }
 
   constructor(props){
@@ -24,9 +25,16 @@ class Courses extends Component {
       this.props.getCourses();
   }
 
+  componentDidUpdate(prevProps){
+    if (this.props.lang != prevProps.lang){
+      this.props.history.push(`/${this.props.lang}/courses/`);
+      this.props.getCourses();
+    }
+  }
+
   render() {
     if (this.props.isLoading){
-        return <h1>Loading...</h1>
+        return <Loading />
     }
     if (this.props.courses.length == 0){
         return <h1>No courses yet!</h1>
@@ -63,7 +71,8 @@ class Courses extends Component {
 
 const mapStateToProps = state => ({
     courses: state.courses.courses,
-    isLoading: state.courses.isLoading
+    isLoading: state.courses.isLoading,
+    lang: state.global.language
 });
 
 export default connect(mapStateToProps, { 

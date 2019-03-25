@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    GET_COURSES, IS_LOADING
+    GET_COURSES, IS_LOADING, ERROR_MESSAGE
 } from './types';
 
 export const getCourses = () => (dispatch, ownProps) => {
