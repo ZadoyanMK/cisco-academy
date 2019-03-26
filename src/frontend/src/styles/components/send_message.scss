@@ -5,11 +5,33 @@
 .open-mess-modal{
     position: fixed;
     right: 10px;
-    top: 75%;
+    top: 85%;
+    z-index: 1;
 }
 .modal-title {
     background: rgb(22, 22, 22);
     h2{
         color: white;
+    }
+}
+// .form-dialog-main{
+//     max-width: 100% !important;
+//     min-width: 100px !important;
+// }
+.form-main{
+    min-width: 100px;
+}
+.MuiDialog-paperWidthSm-131{
+    max-width: 600px;
+    padding: 1 !important;
+    margin: 0 !important;
+}
+
+.MuiDialog-container-126{
+    min-height: 410px;
+}
+@media(max-width: 576px){
+    .open-mess-modal{
+        top: 80%;
     }
 }

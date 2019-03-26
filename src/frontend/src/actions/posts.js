@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { 
     GET_POSTS, GET_POST, 
-    IS_LOADING, NOT_FOUND, IS_ON_DETAILS_PAGE
+    IS_LOADING, NOT_FOUND, IS_ON_DETAILS_PAGE, ERROR_MESSAGE
 } from '../actions/types.js';
 
 //get posts

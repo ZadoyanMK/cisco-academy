@@ -7,7 +7,7 @@ export default class Footer extends Component {
       <Fragment>
         <footer className="footer-container">
         <Typography variant="subheading" color="inherit">
-            <p>&copy; 2019-{new Date().getFullYear()} ZNTU, Inc. &middot; <a href="#">Facebook</a> &middot; <a href="#">Twitter</a></p>
+            <p className=""> &copy; 2019-{new Date().getFullYear()} ZNTU, Inc. &middot; <a href="#">Facebook</a> &middot; <a href="#">Twitter</a></p>
         </Typography>
         </footer>
       </Fragment>

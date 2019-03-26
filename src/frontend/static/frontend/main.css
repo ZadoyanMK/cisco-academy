@@ -1,12 +1,28 @@
 .open-mess-modal {
   position: fixed;
   right: 10px;
-  top: 75%; }
+  top: 85%;
+  z-index: 1; }
 
 .modal-title {
   background: #161616; }
   .modal-title h2 {
     color: white; }
+
+.form-main {
+  min-width: 100px; }
+
+.MuiDialog-paperWidthSm-131 {
+  max-width: 600px;
+  padding: 1 !important;
+  margin: 0 !important; }
+
+.MuiDialog-container-126 {
+  min-height: 410px; }
+
+@media (max-width: 576px) {
+  .open-mess-modal {
+    top: 80%; } }
 
 .pagination-block {
   align-content: center !important;
@@ -14,7 +30,7 @@
   display: flex;
   position: absolute;
   right: 0;
-  bottom: 60px;
+  bottom: 47px;
   left: 0; }
 
 .active .page-link {
@@ -26,6 +42,18 @@
   color: black; }
   .page-link:hover {
     color: #5e5e5e !important; }
+
+.main-image {
+  height: 0;
+  padding-top: 56.25%; }
+
+.card-actions {
+  margin-top: -40px;
+  display: flex;
+  padding: 0; }
+
+.card-content {
+  overflow-x: auto; }
 
 .container-main {
   padding-top: 3.5rem !important; }
@@ -52,7 +80,10 @@ footer {
 
 .footer-container {
   bottom: 0;
-  width: 100%; }
+  width: 100%;
+  padding-bottom: 6px;
+  margin-top: 0px;
+  padding-top: 12px; }
 
 .coming-soon-block {
   align-content: center !important;

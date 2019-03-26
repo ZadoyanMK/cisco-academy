@@ -4,7 +4,20 @@ import {
     SUCCESS_MESSAGE, ERROR_MESSAGE
 } from './types';
 
-export const sendMessage = (title, descr) => dispatch => {
+const messages = {
+    mail: {
+        ok:{
+            'en': "Message was sent!",
+            'ua': "Повідомлення надіслано!"
+        },
+        err: {
+            'en': "Something wrong!\nMessage was not sent!",
+            'ua': "Щось пішло не так!\nПовідомлення надіслано!"
+        }
+    }
+}
+
+export const sendMessage = (title, descr) => (dispatch, ownProps) => {
     let token = null;
     document.cookie.split(';').map(f => {
         if (f.indexOf('csrftoken') >= 0){
@@ -25,15 +38,15 @@ export const sendMessage = (title, descr) => dispatch => {
     .then((res) => {
         dispatch({
             type: SUCCESS_MESSAGE,
-            payload: "Message was sent!"
+            payload: messages.mail.ok[ownProps().global.language]
         })
-        // console.log(res);
     })
     .catch(err => {
+        console.log(err);
         dispatch({
             type: ERROR_MESSAGE,
             payload: {
-                message: `${err.response.data}`,
+                message: messages.mail.err[ownProps().global.language],
                 status: err.response.status
             }
         })

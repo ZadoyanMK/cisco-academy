@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { getPosts, setIsOnDetailsPage } from '../../actions/posts';
 import { setLanguage } from '../../actions/global';
 import Loading from '../components/Loading';
-import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
+import PostCard from '../components/posts/PostCard';
 
 class Posts extends Component {
 
@@ -40,7 +40,13 @@ class Posts extends Component {
     this.props.setIsOnDetailsPage(false);
     var urlParams = new URLSearchParams(window.location.search);
     let page = urlParams.get('page');
-    this.props.getPosts(page);
+    if (page){
+      this.setState({activePage: parseInt(page, 10)});
+      this.props.getPosts(page);
+    }
+    else {
+      this.props.getPosts(1);
+    }
   }
 
   handlePageChange(pageNumber) {
@@ -55,14 +61,13 @@ class Posts extends Component {
     }
     return (
       <Fragment>
-        { this.props.posts.map(post => (
-          <div key={post.id}>
-            <p>
-            <Link to={`post/${post.id}`}> {post.name} </Link>
-            </p>
-            <div dangerouslySetInnerHTML={{__html: post.description}} />
-          </div>
-        )) }
+        { this.props.posts.map(post => {
+          if (!post.hidden){
+            return (
+              <PostCard key={post.id} postData={post}/>
+            )
+          }
+        }) }
         {(() => {
           if (this.props.posts.length > 0){
             return <div className="text-center pagination-block"><Pagination

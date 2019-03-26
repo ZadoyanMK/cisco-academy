@@ -22,6 +22,10 @@ class SendMessage extends Component {
     super(props);
 
     this.state = {
+        errors: {
+          title: false,
+          descr: false
+        },
         title: '',
         description: '',
         open: false,
@@ -50,7 +54,7 @@ class SendMessage extends Component {
   }
 
     handleClickOpen = () => {
-      this.setState({ open: true });                              
+      this.setState({ open: true });
     };
 
     handleClose = () => {
@@ -58,12 +62,22 @@ class SendMessage extends Component {
     };
 
     handleSubmit(event) {
-      this.props.sendMessage(this.state.title, this.state.description);
-      this.setState({
-        title: "",
-        description: "",
-      });
-      this.handleClose();
+      if (this.state.title != '' && this.state.description != ''){
+        this.props.sendMessage(this.state.title, this.state.description);
+        this.setState({
+          title: "",
+          description: "",
+        });
+        this.handleClose();
+      } else {
+        this.setState({ 
+          errors: {
+            title: this.state.title == '',
+            descr: this.state.description == ''
+          },
+         });
+      }
+      
       event.preventDefault();
     }
     
@@ -86,6 +100,7 @@ class SendMessage extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
+          className="form-dialog-main"
         >
           <DialogTitle id="form-dialog-title" className="modal-title">
             {this.state[this.props.lang].titleText}
@@ -100,7 +115,8 @@ class SendMessage extends Component {
                 label={this.state[this.props.lang].titleField}
                 type="text"
                 fullWidth
-                required
+                // required
+                error={this.state.errors.title}
                 onChange={this.handleChangeTitle}
               />
               <TextField
@@ -111,10 +127,11 @@ class SendMessage extends Component {
                 type="text"
                 fullWidth
                 multiline
-                required
+                // required
+                error={this.state.errors.descr}
                 onChange={this.handleChangeDescription}
               />
-              <DialogContentText>
+              <DialogContentText className="pt-2">
                 {this.state[this.props.lang].helpMessage}
               </DialogContentText>
             </DialogContent>
