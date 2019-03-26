@@ -1,9 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { sendMessage } from '../../actions/global';
-// import axios from 'axios';
 import { connect } from 'react-redux';
-import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -13,24 +10,44 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import Email                                                                                                                                                                                                                                                                                                                                                                                                     from '@material-ui/icons/Email';
+import Fab from '@material-ui/core/Fab';
+import Email from '@material-ui/icons/Email';
+import PropTypes from 'prop-types';
 
 class SendMessage extends Component {
-    constructor(props){
-        super(props);
+  static propTypes = {
+    lang: PropTypes.string.isRequired
+  }
+  constructor(props){
+    super(props);
 
-        this.state = {
-            title: '',
-            description: '',
-            open: false
-        };
+    this.state = {
+        title: '',
+        description: '',
+        open: false,
 
-        this.handleChangeTitle = this.handleChangeTitle.bind(this);
-        this.handleChangeDescription = this.handleChangeDescription.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+        'en':{
+          titleText: 'Send your feedback!',
+          titleField: 'Title',
+          descriptionField: 'Description',
+          helpMessage: 'Fields marked with * are required!',
+          cancelButton: 'Cancel',
+          sendButton: 'Send'
+        },
+        'ua': {
+          titleText: 'Надішліть нам листа!',
+          titleField: 'Заголовок',
+          descriptionField: 'Текст повідомлення',
+          helpMessage: 'Поля позначені * необхідно заповнити!',
+          cancelButton: 'Відмінити',
+          sendButton: 'Надіслати'
+        }
+    };
+
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangeDescription = this.handleChangeDescription.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
     handleClickOpen = () => {
       this.setState({ open: true });                              
@@ -59,40 +76,20 @@ class SendMessage extends Component {
     
     render() {
     return (
-      // <div>
-      //   <form onSubmit={this.handleSubmit} className="form-main">
-      //       Title:
-      //       <input type="text" value={this.state.title} onChange={this.handleChangeTitle} />
-      //       Description:
-      //       <CKEditor
-      //               toolbar={[ 'heading', '|', 'bold', 'italic' ]}
-      //               editor={ ClassicEditor }
-      //               data="<p>Hello from CKEditor 5!</p>"
-      //               onInit={ editor => {
-      //                   // You can store the "editor" and use when it is needed.
-      //                   console.log( 'Editor is ready to use!', editor );
-      //               } }
-      //               onChange={ ( event, editor ) => {
-      //                   const data = editor.getData();
-      //                   console.log( { event, editor, data } );
-      //               } }
-      //           />
-      //     <input type="submit" value="Submit"/>
-      //   </form>
-      // </div>
       <div>
         <div className="open-mess-modal">
-
-        <IconButton aria-label="Send Mail" onClick={this.handleClickOpen} color="secondary">
+        <Fab aria-label="Send Mail" onClick={this.handleClickOpen} color="secondary">
           <Email fontSize="large"/>
-        </IconButton>
+        </Fab>
         </div>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title" className="modal-title">Send your feedback!</DialogTitle>
+          <DialogTitle id="form-dialog-title" className="modal-title">
+            {this.state[this.props.lang].titleText}
+          </DialogTitle>
           <form onSubmit={this.handleSubmit} className="form-main">
             <DialogContent>
               <TextField
@@ -100,18 +97,17 @@ class SendMessage extends Component {
                 value={this.state.title}
                 margin="dense"
                 id="title"
-                label="Title"
+                label={this.state[this.props.lang].titleField}
                 type="text"
                 fullWidth
                 required
                 onChange={this.handleChangeTitle}
               />
               <TextField
-                autoFocus
                 value={this.state.description}
                 margin="dense"
                 id="description"
-                label="Description"
+                label={this.state[this.props.lang].descriptionField}
                 type="text"
                 fullWidth
                 multiline
@@ -119,15 +115,15 @@ class SendMessage extends Component {
                 onChange={this.handleChangeDescription}
               />
               <DialogContentText>
-                Fields marked with * are required!.
+                {this.state[this.props.lang].helpMessage}
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={this.handleClose} className="submit-button" >
-                Cancel
+              <Button onClick={this.handleClose} color="primary" >
+                {this.state[this.props.lang].cancelButton}
               </Button>
-              <Button type="submit" color="primary">
-                Send
+              <Button type="submit" color="secondary">
+                {this.state[this.props.lang].sendButton}
               </Button>
             </DialogActions>
           </form>
@@ -138,6 +134,7 @@ class SendMessage extends Component {
 }
 
 const mapStateToProps = state => ({
+  lang: state.global.language
 })
 
 export default connect(mapStateToProps, {sendMessage})(SendMessage);

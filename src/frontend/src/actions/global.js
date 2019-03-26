@@ -42,7 +42,7 @@ export const sendMessage = (title, descr) => dispatch => {
 }
 
 export const setLanguage = (lang) => (dispatch) => {
-    if (lang == 'en' || lang == 'ru'){
+    if (lang == 'en' || lang == 'ua'){
         dispatch({
             type: SET_LANGUAGE,
             payload: lang

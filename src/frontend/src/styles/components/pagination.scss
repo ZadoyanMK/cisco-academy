@@ -1,0 +1,23 @@
+.pagination-block{
+    align-content: center !important;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 60px;
+    left: 0;
+    // padding: 1rem;
+}
+
+.active .page-link{
+    background: black !important;
+    border-color: rgb(29, 29, 29) !important; 
+    color: white;
+}
+
+.page-link{
+    color: black;
+    &:hover{
+        color: rgb(94, 94, 94) !important;
+    }
+}

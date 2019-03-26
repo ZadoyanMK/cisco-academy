@@ -5,7 +5,7 @@ import { getCourses } from '../../actions/courses';
 import { setIsOnDetailsPage } from '../../actions/posts';
 import { setLanguage } from '../../actions/global';
 import Loading from '../components/Loading';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class Courses extends Component {
 
@@ -37,7 +37,7 @@ class Courses extends Component {
         return <Loading />
     }
     if (this.props.courses.length == 0){
-        return <h1>No courses yet!</h1>
+        return <div className="coming-soon-block"></div>
     }
     return (
       <Fragment>

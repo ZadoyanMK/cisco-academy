@@ -55,26 +55,48 @@ class Posts extends Component {
     }
     return (
       <Fragment>
-        <h1>Posts page</h1>
-        
-
-            { this.props.posts.map(post => (
-              <div key={post.id}>
-                <p>
-                <Link to={`post/${post.id}`}> {post.name} </Link>
-                </p>
-                <div dangerouslySetInnerHTML={{__html: post.description}} />
-              </div>
-            )) }
-
-        
-        <Pagination
-          activePage={this.state.activePage}
-          itemsCountPerPage={this.props.itemsCountPerPage}
-          totalItemsCount={this.props.totalItemsCount}
-          
-          onChange={this.handlePageChange}
-        />
+        { this.props.posts.map(post => (
+          <div key={post.id}>
+            <p>
+            <Link to={`post/${post.id}`}> {post.name} </Link>
+            </p>
+            <div dangerouslySetInnerHTML={{__html: post.description}} />
+          </div>
+        )) }
+        {(() => {
+          if (this.props.posts.length > 0){
+            return <div className="text-center pagination-block"><Pagination
+                      activePage={this.state.activePage}
+                      itemsCountPerPage={this.props.itemsCountPerPage}
+                      totalItemsCount={this.props.totalItemsCount}
+                      onChange={this.handlePageChange}
+                      pageRangeDisplayed={10}
+            
+                      innerClass="pagination"
+                      activeClass="page-item active"
+                      activeLinkClass=""
+                      
+                      itemClass="page-item"
+                      itemClassFirst=""
+                      itemClassPrev=""
+                      itemClassNext=""
+                      itemClassLast=""
+                      
+                      linkClass="page-link"
+                      linkClassFirst=""
+                      linkClassLast=""
+                      linkClassNext=""
+                      linkClassPrev=""
+            
+                      prevPageText="<"
+                      firstPageText="<<"
+                      lastPageText=">>"
+                      nextPageText=">"
+                    /></div>
+          } else {
+            return <div className="coming-soon-block"></div>
+          }
+        })()} 
       </Fragment>
     )
   }

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getPostDetails, setPostDetails, setIsOnDetailsPage } from '../../actions/posts';
 import { setLanguage } from '../../actions/global';
-import { Link } from "react-router-dom";
 import Loading from '../components/Loading';
 
 class PostDetails extends Component {

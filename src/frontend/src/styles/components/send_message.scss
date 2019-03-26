@@ -1,16 +1,11 @@
-// .form-main {
-//     max-width: 40%;
-//     max-height: 10%;
+// .submit-button > span{
+//     color: rgb(180, 1, 1);
 // }
 
-.submit-button > span{
-    color: rgb(180, 1, 1);
-}
-
 .open-mess-modal{
-    position: absolute;
+    position: fixed;
     right: 10px;
-    top: 80%;
+    top: 75%;
 }
 .modal-title {
     background: rgb(22, 22, 22);

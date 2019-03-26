@@ -11,11 +11,13 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     preview = RichTextUploadingField(null=True, blank=True)
 
+    hidden = models.BooleanField(default=True)
+
     EN_LANG = 'en'
-    RU_LANG = 'ru'
+    UA_LANG = 'ua'
     LANGUAGES = (
         (EN_LANG, 'English'),
-        (RU_LANG, 'Russian'),
+        (UA_LANG, 'Ukrainian'),
     )
     language = models.CharField(choices=LANGUAGES, default=EN_LANG, max_length=3)
 
@@ -26,10 +28,12 @@ class Course(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     preview = RichTextUploadingField(null=True, blank=True)
     
+    hidden = models.BooleanField(default=True)
+
     EN_LANG = 'en'
-    RU_LANG = 'ru'
+    UA_LANG = 'ua'
     LANGUAGES = (
         (EN_LANG, 'English'),
-        (RU_LANG, 'Russian'),
+        (UA_LANG, 'Ukrainian'),
     )
     language = models.CharField(choices=LANGUAGES, default=EN_LANG, max_length=3)

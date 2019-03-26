@@ -4,21 +4,24 @@ import {
     BrowserRouter,
     Route,
     Switch,
-    Redirect
+    // Redirect
   } from "react-router-dom";
 
 import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from "react-alert-template-basic";
 
-import Header from './layout/Header'
+import Header from './layout/Header';
+import Footer from './layout/Footer';
+
 import Alerts from './components/Alerts'
 import Posts from './pages/Posts'
 import SendMessage from './components/SendMessage';
-import PostDetails from './pages/PostDetails'
+// import PostDetails from './pages/PostDetails';
 import Courses from './pages/Courses';
 import Error404 from './pages/Eror404';
 
-import PrivateRoute from './common/PrivateRoute'
+
+// import PrivateRoute from './common/PrivateRoute'
 import { Provider } from 'react-redux';
 import store from '../store';
 
@@ -36,16 +39,17 @@ class App extends Component{
                 <Fragment>
                     <Header />
                     <Alerts />
-                    <div className="container">
+                    <div className="container container-main">
                         <Switch>
                             {/* <Route exact path="/404/"component={Error404} /> */}
                             <Route exact path="/:lang/" component={Posts} />
-                            <Route exact path="/:lang/post/:id/" component={PostDetails} />
+                            {/* <Route exact path="/:lang/post/:id/" component={PostDetails} /> */}
                             <Route exact path="/:lang/courses/" component={Courses} />
                             <Route component={Error404}/>
                         </Switch>
                     </div>
                     <SendMessage />
+                    <Footer />
                 </Fragment>
                 </BrowserRouter>
 

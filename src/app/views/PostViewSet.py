@@ -26,7 +26,7 @@ class PostViewSet(viewsets.ModelViewSet):
         return Response({
             'data': serializer_data,
             'pagination':{
-                'total_count': len(Post.objects.all()),
+                'total_count': len(Post.objects.filter(language=lang)),
                 'per_page': settings.POSTS_PER_PAGE
             }
         })
