@@ -25,7 +25,7 @@ class Course(models.Model):
     description = RichTextUploadingField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     preview = RichTextUploadingField(null=True, blank=True)
-    main_image = models.ImageField(upload_to='posts/%Y/%m/%d/', null=True, blank=True, max_length=512)
+    main_image = models.ImageField(upload_to='courses/%Y/%m/%d/', null=True, blank=True, max_length=512)
     hidden = models.BooleanField(default=True)
 
     EN_LANG = 'en'
