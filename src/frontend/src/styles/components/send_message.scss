@@ -8,6 +8,12 @@
     top: 85%;
     z-index: 1;
 }
+.button-open-mess-modal{
+    background-color: #a00002 !important;
+    &:hover{
+        background-color: #520102 !important;
+    }
+}
 .modal-title {
     background: rgb(22, 22, 22);
     h2{
@@ -21,10 +27,10 @@
 .form-main{
     min-width: 100px;
 }
-.MuiDialog-paperWidthSm-131{
+.MuiDialog-paperWidthSm-125, .MuiDialog-paperWidthSm-131{
     max-width: 600px;
-    padding: 1 !important;
-    margin: 0 !important;
+    margin: 5px !important;
+    min-height: 320px;
 }
 
 .MuiDialog-container-126{

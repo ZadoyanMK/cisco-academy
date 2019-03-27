@@ -1,14 +1,3 @@
-// import React, { Component } from 'react'
-
-// export default class PostCard extends Component {
-//   render() {
-//     return (
-//       <div>
-//         {this.props.postData.name}
-//       </div>
-//     )
-//   }
-// }
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -19,14 +8,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   card: {
@@ -34,29 +20,30 @@ const styles = theme => ({
     marginBottom: 10,
   },
   expand: {
+    position: 'relative',
+    left: '48%',
     transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    marginRight: 'auto',
     transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
     transform: 'rotate(180deg)',
+    position: 'relative',
+    left: '48%',
   },
 });
 
-class RecipeReviewCard extends React.Component {
+class PostCard extends React.Component {
   state = { expanded: false };
 
   constructor(props){
       super(props);
 
       this.displayImage = this.displayImage.bind(this);
+      this.getFormatDate = this.getFormatDate.bind(this);
   }
-
   handleExpandClick = () => {
-      
     this.setState(state => ({ expanded: !state.expanded }));
   };
 
@@ -70,6 +57,14 @@ class RecipeReviewCard extends React.Component {
     }
   }
 
+  getFormatDate(){
+    let d = new Date(this.props.postData.created_at);
+    let l = this.props.lang == 'ua' ? 'uk-UA' :  'en-US';
+    return d.toLocaleDateString(
+        l,
+        { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    );
+  }
   render() {
     const { classes } = this.props;
 
@@ -77,14 +72,15 @@ class RecipeReviewCard extends React.Component {
       <Card className={classes.card}>
         <CardHeader
           title={this.props.postData.name}
-          subheader={this.props.postData.created_at}
+          subheader={this.getFormatDate()}
         />
 
         {this.displayImage()}
 
         <CardContent>
           <Typography component="div">
-            <div dangerouslySetInnerHTML={{__html: this.props.postData.preview}} />
+            <div className="card-content"
+            dangerouslySetInnerHTML={{__html: this.props.postData.preview}} />
           </Typography>
         </CardContent>
         
@@ -107,14 +103,23 @@ class RecipeReviewCard extends React.Component {
           >
             <ExpandMoreIcon />
           </IconButton>
+
+          <Typography className="creator-div">
+              {this.props.postData.creator_name}
+          </Typography>
         </CardActions>
       </Card>
     );
   }
 }
 
-RecipeReviewCard.propTypes = {
+PostCard.propTypes = {
   classes: PropTypes.object.isRequired,
+  lang: PropTypes.string.isRequired,
 };
 
-export default withStyles(styles)(RecipeReviewCard);
+const mapToStateProps = state => ({
+    lang: state.global.language
+})
+
+export default connect(mapToStateProps, {})(withStyles(styles)(PostCard));

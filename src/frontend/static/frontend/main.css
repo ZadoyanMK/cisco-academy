@@ -4,6 +4,11 @@
   top: 85%;
   z-index: 1; }
 
+.button-open-mess-modal {
+  background-color: #a00002 !important; }
+  .button-open-mess-modal:hover {
+    background-color: #520102 !important; }
+
 .modal-title {
   background: #161616; }
   .modal-title h2 {
@@ -12,10 +17,10 @@
 .form-main {
   min-width: 100px; }
 
-.MuiDialog-paperWidthSm-131 {
+.MuiDialog-paperWidthSm-125, .MuiDialog-paperWidthSm-131 {
   max-width: 600px;
-  padding: 1 !important;
-  margin: 0 !important; }
+  margin: 5px !important;
+  min-height: 320px; }
 
 .MuiDialog-container-126 {
   min-height: 410px; }
@@ -30,7 +35,8 @@
   display: flex;
   position: absolute;
   right: 0;
-  bottom: 47px;
+  bottom: 80px;
+  font-size: 25px;
   left: 0; }
 
 .active .page-link {
@@ -39,9 +45,19 @@
   color: white; }
 
 .page-link {
-  color: black; }
+  color: black;
+  border-radius: 5px;
+  margin: 1px;
+  padding: 6px 10px 6px 10px !important;
+  width: 45px; }
   .page-link:hover {
     color: #5e5e5e !important; }
+
+@media (max-width: 992px) {
+  .pagination-block {
+    font-size: 20px; }
+  .page-link {
+    width: 40px; } }
 
 .main-image {
   height: 0;
@@ -55,8 +71,46 @@
 .card-content {
   overflow-x: auto; }
 
+.creator-div {
+  margin-left: auto !important;
+  padding-right: 10px;
+  font-size: 13px !important; }
+
+.posts-container {
+  width: 100%; }
+
+.courses-card {
+  width: 100%;
+  margin: 0 5px 5px 0px;
+  display: inline-block; }
+
+.courses-media {
+  height: 140px; }
+
+@media (min-width: 576px) {
+  .courses-card {
+    width: 250px; } }
+
+@media (min-width: 768px) {
+  .courses-card {
+    width: 300px; } }
+
+.form-dialog-main-course {
+  min-width: 400px; }
+
+.course-close-btn {
+  position: absolute !important;
+  bottom: 10px;
+  right: 10px; }
+
+.curse-close-button {
+  padding: 0 !important;
+  position: absolute !important;
+  right: 15px; }
+
 .container-main {
-  padding-top: 3.5rem !important; }
+  padding-top: 3.5rem !important;
+  padding-bottom: 2.5rem; }
 
 .app-toolbar {
   background-color: black !important; }
@@ -84,6 +138,10 @@ footer {
   padding-bottom: 6px;
   margin-top: 0px;
   padding-top: 12px; }
+
+.lang-buttons-container {
+  display: flex;
+  justify-content: center; }
 
 .coming-soon-block {
   align-content: center !important;

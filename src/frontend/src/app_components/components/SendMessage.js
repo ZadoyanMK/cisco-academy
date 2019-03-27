@@ -32,16 +32,16 @@ class SendMessage extends Component {
 
         'en':{
           titleText: 'Send your feedback!',
-          titleField: 'Title',
-          descriptionField: 'Description',
+          titleField: 'Title*',
+          descriptionField: 'Description*',
           helpMessage: 'Fields marked with * are required!',
           cancelButton: 'Cancel',
           sendButton: 'Send'
         },
         'ua': {
           titleText: 'Надішліть нам листа!',
-          titleField: 'Заголовок',
-          descriptionField: 'Текст повідомлення',
+          titleField: 'Заголовок*',
+          descriptionField: 'Текст повідомлення*',
           helpMessage: 'Поля позначені * необхідно заповнити!',
           cancelButton: 'Відмінити',
           sendButton: 'Надіслати'
@@ -92,7 +92,12 @@ class SendMessage extends Component {
     return (
       <div>
         <div className="open-mess-modal">
-        <Fab aria-label="Send Mail" onClick={this.handleClickOpen} color="secondary">
+        <Fab 
+        aria-label="Send Mail" 
+        onClick={this.handleClickOpen} 
+        color="secondary"
+        className="button-open-mess-modal"
+        >
           <Email fontSize="large"/>
         </Fab>
         </div>

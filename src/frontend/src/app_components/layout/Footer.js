@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Typography from '@material-ui/core/Typography';
+import LanguageButtons from '../components/LanguageButtons';
 
 export default class Footer extends Component {
   render() {
@@ -7,7 +8,12 @@ export default class Footer extends Component {
       <Fragment>
         <footer className="footer-container">
         <Typography variant="subheading" color="inherit">
-            <p className=""> &copy; 2019-{new Date().getFullYear()} ZNTU, Inc. &middot; <a href="#">Facebook</a> &middot; <a href="#">Twitter</a></p>
+            <p className="mb-0"> 
+              &copy; 2019-{new Date().getFullYear()} ZNTU, Inc. &middot; <a href="#">Facebook</a> &middot; <a href="#">Twitter</a>
+            </p>
+            <div className="lang-buttons-container">
+              <LanguageButtons />
+            </div>
         </Typography>
         </footer>
       </Fragment>

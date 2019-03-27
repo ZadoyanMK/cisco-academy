@@ -5,7 +5,7 @@ import { getCourses } from '../../actions/courses';
 import { setIsOnDetailsPage } from '../../actions/posts';
 import { setLanguage } from '../../actions/global';
 import Loading from '../components/Loading';
-// import { Link } from "react-router-dom";
+import CoursesCard from '../components/courses/CoursesCard';
 
 class Courses extends Component {
 
@@ -41,29 +41,15 @@ class Courses extends Component {
     }
     return (
       <Fragment>
-        <h1>Courses page</h1>
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>
-                Name
-              </th>
-              <th>
-                Description
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.props.courses.map(course => (
-              <tr key={course.id}>
-                <td>
-                {course.name}
-                </td>
-                <td dangerouslySetInnerHTML={{__html: course.description}} />
-              </tr>
-            )) }
-          </tbody>
-        </table>
+        <div className="courses-container">
+        { this.props.courses.map(course => {
+          if (!course.hidden){
+            return (
+              <CoursesCard key={course.id} courseData={course} lang={this.props.lang}/>
+            )
+          }
+        }) }
+        </div>
       </Fragment>
     )
   }

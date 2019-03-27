@@ -1,0 +1,38 @@
+.courses-container{
+    // display: flex;
+    // justify-content: center;
+}
+.courses-card{
+    width: 100%;
+    margin: 0 5px 5px 0px;
+    display: inline-block;
+}
+.courses-media{
+    height: 140px;
+}
+
+@media (min-width: 576px){
+    .courses-card{
+        width: 250px;
+    }
+}
+
+@media (min-width: 768px){
+    .courses-card{
+        width: 300px;
+    }
+}
+.form-dialog-main-course{
+    min-width: 400px;
+}
+
+.course-close-btn{
+    position: absolute !important;
+    bottom: 10px;
+    right: 10px;
+}
+.curse-close-button{
+    padding: 0 !important;
+    position: absolute !important;
+    right: 15px;
+}

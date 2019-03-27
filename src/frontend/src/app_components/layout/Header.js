@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setLanguage } from '../../actions/global'
-import LanguageButtons from '../components/LanguageButtons';
+
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -36,11 +36,11 @@ export class Header extends Component {
                 { this.state[this.props.lang].courses }
               </Link>
             </Typography>
-            {(() => {
+            {/* {(() => {
               if (!this.props.isOnPage){
-                return <LanguageButtons />
+                
               }
-            })()}           
+            })()}            */}
           </Toolbar>
         </AppBar>
       </Fragment>

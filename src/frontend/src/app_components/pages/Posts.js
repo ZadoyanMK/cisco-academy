@@ -61,6 +61,7 @@ class Posts extends Component {
     }
     return (
       <Fragment>
+        <div className="posts-container">
         { this.props.posts.map(post => {
           if (!post.hidden){
             return (
@@ -101,7 +102,8 @@ class Posts extends Component {
           } else {
             return <div className="coming-soon-block"></div>
           }
-        })()} 
+        })()}
+        </div>
       </Fragment>
     )
   }

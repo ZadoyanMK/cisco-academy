@@ -7,7 +7,7 @@ export class LanguageButtons extends Component {
     render() {
       return (
         <Fragment>
-        <IconButton size="small" className="ml-auto" aria-label="English" onClick={() => this.props.setLanguage("en")} >
+        <IconButton size="small" className="" aria-label="English" onClick={() => this.props.setLanguage("en")} >
           <span className="flag-icon flag-icon-us"></span>
         </IconButton>
         <IconButton size="small" aria-label="Ukrainian" onClick={() => this.props.setLanguage("ua")}>
