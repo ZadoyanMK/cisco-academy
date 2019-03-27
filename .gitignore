@@ -40,3 +40,7 @@ docker-compose.yaml
 .vscode/*
 
 package-lock.json
+prod.yaml
+
+static_files/*
+static_files

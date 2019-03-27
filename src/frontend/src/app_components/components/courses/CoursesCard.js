@@ -83,14 +83,15 @@ class CoursesCard extends React.Component {
             <Clear />
           </IconButton>
           </DialogTitle>
-          <form onSubmit={this.handleSubmit} className="form-main">
-            <DialogContent>
+          
+            <DialogContent className="course-card-content">
             <Typography 
                 className="card-content"
+                variant="subheading"
                 dangerouslySetInnerHTML={{__html: this.props.courseData.description}} 
             />
             </DialogContent>
-          </form>
+          
         </Dialog>
         </React.Fragment>
     );

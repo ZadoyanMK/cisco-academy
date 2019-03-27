@@ -1,48 +1,7 @@
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-// var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 // "dev": "webpack --watch --mode development ./src/frontend/src/index.js --output ./src/frontend/static/frontend/main.js",
 // "build": "webpack --mode production ./src/frontend/src/index.js --output ./src/frontend/static/frontend/main.js",
-
-// module.exports = {
-//   // plugins: [
-//   //   new BrowserSyncPlugin({
-
-//   //     host: 'localhost',
-//   //     port: 8000,
-//   //     server: { baseDir: ['src/frontend/templates/frontend'] }
-//   //   })
-//   // ],
-//   entry: ['./src/frontend/src/index.js', './src/frontend/src/styles/main.scss'],
-//   output: {
-//     filename: 'src/frontend/static/frontend/main.js'
-//   },
-//   module: {
-    
-//     rules: [
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: "babel-loader"
-      //   }
-      // },
-//       { 
-//         test: /\.(css|sass|scss)$/,
-//         loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
-//       }
-//     ]
-//   },
-//   plugins: [
-//     new ExtractTextPlugin({ // define where to save the file
-//       filename: './src/frontend/static/frontend/[name].bundle.css',
-//       allChunks: true,
-//     }),
-//   ],
-// }
-
-
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
@@ -50,7 +9,10 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'src/frontend/static/frontend'),
 		filename: 'main.js',
-  },
+	},
+	plugins: [
+		new webpack.HashedModuleIdsPlugin(), // so that file hashes don't change unexpectedly
+	],
 	module: {
 		rules: [
       {
@@ -84,5 +46,36 @@ module.exports = {
 				]
 			}
 		]
-	}
+	},
+	// optimization: {
+	// 	splitChunks: {
+	// 		chunks: 'all',
+	// 		minSize: 30000,
+	// 		maxSize: 200000,
+	// 		minChunks: 1,
+	// 		maxAsyncRequests: 5,
+	// 		maxInitialRequests: 3,
+	// 		automaticNameDelimiter: '~',
+	// 		name: true,
+	// 		cacheGroups: {
+	// 		  vendors: {
+	// 			test: /[\\/]node_modules[\\/]/,
+	// 			priority: -10,
+	// 			name(module) {
+	// 				// get the name. E.g. node_modules/packageName/not/this/part.js
+	// 				// or node_modules/packageName
+	// 				const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+		
+	// 				// npm package names are URL-safe, but some servers don't like @ symbols
+	// 				return `npm`;
+	// 			},
+	// 		  },
+	// 		  default: {
+	// 			minChunks: 2,
+	// 			priority: -20,
+	// 			reuseExistingChunk: true
+	// 		  }
+	// 		}
+	// 	  }
+	// }
 };

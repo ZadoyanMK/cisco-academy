@@ -26,7 +26,7 @@ MEDIA_URL = "/upload/"
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
+STATIC_ROOT = 'static_files/'
 
 APPEND_SLASH = True
 
@@ -34,13 +34,12 @@ APPEND_SLASH = True
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7-5dq9c*7mdgg1u_b!v42p4-qlqh6^vi8t$x53=9*=dy1uf92&'
+SECRET_KEY = config.get('APP', 'secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False # bool(config.get('APP', 'debug'))
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = config.get('APP', 'host').split(',')
 
 # Application definition
 
@@ -52,7 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'debug_toolbar',
     'app',
     'ckeditor_uploader',
     'ckeditor',
@@ -68,7 +66,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -170,4 +167,24 @@ EMAIL_HOST_PASSWORD = config.get("MAIL", "password")
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 
-POSTS_PER_PAGE = 5
+POSTS_PER_PAGE = int(config.get('APP', 'posts_per_page'))
+
+## Logging configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

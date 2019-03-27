@@ -4,7 +4,7 @@ from django.conf.urls import url, include, handler404
 from django.conf import settings
 from django.views.static import serve
 from frontend import views
-
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,7 +15,7 @@ urlpatterns = [
             'document_root': settings.MEDIA_ROOT
     }),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
 handler404 = 'frontend.views.redirect_to_404'
