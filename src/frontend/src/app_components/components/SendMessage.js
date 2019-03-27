@@ -105,7 +105,7 @@ class SendMessage extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
-          className="form-dialog-main"
+          className="dialog-view"
         >
           <DialogTitle id="form-dialog-title" className="modal-title">
             {this.state[this.props.lang].titleText}
@@ -120,7 +120,6 @@ class SendMessage extends Component {
                 label={this.state[this.props.lang].titleField}
                 type="text"
                 fullWidth
-                // required
                 error={this.state.errors.title}
                 onChange={this.handleChangeTitle}
               />

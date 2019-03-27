@@ -14,19 +14,11 @@ docker-compose down --rmi all -v --remove-orphans
 ### Run project
 
 ```
-docker-compose build && docker-compose up
+docker-compose -f prod.yaml build && docker-compose -f prod.yaml up
 ```
 
 And in other console
-1. 
+
 ```
-docker-compose -f prod.yaml run app python manage.py migrate
-```
-2. 
-```
-docker-compose -f prod.yaml run app python manage.py createsuperuser
-```
-3. 
-```
-docker-compose -f prod.yaml run app python manage.py collectstatic
+docker-compose -f prod.yaml run app python manage.py migrate && docker-compose -f prod.yaml run app python manage.py collectstatic && docker-compose -f prod.yaml run app python manage.py createsuperuser
 ```

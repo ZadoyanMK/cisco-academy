@@ -15,15 +15,12 @@
     color: white; }
 
 .form-main {
-  min-width: 100px; }
+  min-height: 265px; }
 
-.MuiDialog-paperWidthSm-125, .MuiDialog-paperWidthSm-131 {
+.dialog-view > div > div {
   max-width: 600px;
   margin: 5px !important;
   min-height: 320px; }
-
-.MuiDialog-container-126 {
-  min-height: 410px; }
 
 @media (max-width: 576px) {
   .open-mess-modal {

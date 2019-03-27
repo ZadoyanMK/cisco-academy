@@ -68,7 +68,7 @@ class CoursesCard extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
-          className="form-dialog-main "
+          className="dialog-view"
         >
           <DialogTitle id="form-dialog-title" className="modal-title form-dialog-main-course">
         
