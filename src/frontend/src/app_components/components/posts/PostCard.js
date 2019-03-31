@@ -20,8 +20,6 @@ const styles = theme => ({
     marginBottom: 10,
   },
   expand: {
-    position: 'relative',
-    left: '48%',
     transform: 'rotate(0deg)',
     transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
@@ -33,8 +31,6 @@ const styles = theme => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)',
-    position: 'relative',
-    left: '48%',
   },
 });
 
@@ -100,6 +96,7 @@ class PostCard extends React.Component {
         </Collapse>
 
         <CardActions className="card-actions" disableActionSpacing>
+        <div className="expand-button-block">
           <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
@@ -110,7 +107,7 @@ class PostCard extends React.Component {
           >
             <ExpandMoreIcon />
           </IconButton>
-
+          </div>
           <Typography className="creator-div">
               {this.props.postData.creator_name}
           </Typography>

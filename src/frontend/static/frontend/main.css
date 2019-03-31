@@ -17,10 +17,6 @@
   margin: 5px !important;
   min-height: 320px; }
 
-@media (min-width: 992px) {
-  .dialog-view > div > div {
-    min-width: 80%; } }
-
 @media (max-width: 576px) {
   .open-mess-modal {
     top: 80%; } }
@@ -75,6 +71,12 @@
 .posts-container {
   width: 100%; }
 
+.expand-button-block {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%); }
+
 .courses-card {
   width: 100%;
   margin: 0 5px 5px 0px;
@@ -106,6 +108,10 @@
 
 .course-card-content {
   overflow-x: auto; }
+
+@media (min-width: 576px) {
+  .dialog-view-course > div > div {
+    min-width: 80%; } }
 
 .container-main {
   padding-top: 3.5rem !important;
@@ -145,7 +151,8 @@ footer {
 .coming-soon-block {
   align-content: center !important;
   justify-content: center;
-  display: flex; }
+  display: flex;
+  padding-top: 90px; }
   .coming-soon-block:before {
     content: "";
     align-content: center !important;
@@ -154,7 +161,7 @@ footer {
     position: absolute;
     width: 300px;
     height: 200px;
-    background: #e9e9e9 url("./images/coming.jpg");
+    background: url("./images/coming.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-size: 100% 100%; }

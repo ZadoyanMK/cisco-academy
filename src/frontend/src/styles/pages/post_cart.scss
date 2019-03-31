@@ -19,3 +19,8 @@
 .posts-container{
     width: 100%;
 }
+.expand-button-block{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

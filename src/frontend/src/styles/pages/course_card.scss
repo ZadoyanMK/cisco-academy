@@ -39,3 +39,13 @@
 .course-card-content{
     overflow-x: auto;
 }
+
+.dialog-view-course > div > div{
+    // min-width: 80%;
+}
+
+@media (min-width: 576px){
+    .dialog-view-course > div > div{
+        min-width: 80%;
+    }
+}

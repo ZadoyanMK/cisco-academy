@@ -5,6 +5,7 @@
     align-content: center !important;
     justify-content: center;
     display: flex;
+    padding-top: 90px;
 
     &:before{
         content: "";
@@ -14,11 +15,10 @@
         position: absolute;
         width: 300px;
         height: 200px;
-        background: rgb(233, 233, 233) url("./images/coming.jpg");
+        background: url("./images/coming.png");
         background-size: cover;
         background-repeat: no-repeat;
         background-size: 100% 100%;
-
     }
 }
 @media (min-width: 576px) { 
