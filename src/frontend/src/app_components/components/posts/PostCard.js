@@ -27,6 +27,10 @@ const styles = theme => ({
       duration: theme.transitions.duration.shortest,
     }),
   },
+  media: {
+    height: 320,
+    // paddingTop: '56.25%'
+  },
   expandOpen: {
     transform: 'rotate(180deg)',
     position: 'relative',
@@ -48,9 +52,10 @@ class PostCard extends React.Component {
   };
 
   displayImage() {
+    const { classes } = this.props;
     if (this.props.postData.main_image != null){
         return (<CardMedia
-            className="main-image"
+            className={classes.media}
             image={this.props.postData.main_image}
             title={this.props.postData.name}
         />)
@@ -86,9 +91,11 @@ class PostCard extends React.Component {
         
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
+            <Typography component="div">
               <div className="card-content"
               dangerouslySetInnerHTML={{__html: this.props.postData.description}} 
               />
+              </Typography>
           </CardContent>
         </Collapse>
 

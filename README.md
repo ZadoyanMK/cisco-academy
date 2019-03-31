@@ -22,3 +22,8 @@ And in other console
 ```
 docker-compose -f prod.yaml run app python manage.py migrate && docker-compose -f prod.yaml run app python manage.py collectstatic && docker-compose -f prod.yaml run app python manage.py createsuperuser
 ```
+
+for develop:
+```
+docker-compose run app python manage.py migrate && docker-compose run app python manage.py collectstatic && docker-compose run app python manage.py createsuperuser
+```

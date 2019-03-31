@@ -14,7 +14,8 @@ import Header from './layout/Header';
 import Footer from './layout/Footer';
 
 import Alerts from './components/Alerts'
-import Posts from './pages/Posts'
+import Posts from './pages/Posts';
+import About from './pages/About';
 import SendMessage from './components/SendMessage';
 // import PostDetails from './pages/PostDetails';
 import Courses from './pages/Courses';
@@ -46,6 +47,7 @@ class App extends Component{
                             <Route exact path="/:lang/" component={Posts} />
                             {/* <Route exact path="/:lang/post/:id/" component={PostDetails} /> */}
                             <Route exact path="/:lang/courses/" component={Courses} />
+                            <Route exact path="/:lang/about/" component={About} />
                             <Route component={Error404}/>
                         </Switch>
                     </div>

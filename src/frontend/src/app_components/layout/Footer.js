@@ -9,7 +9,7 @@ export default class Footer extends Component {
         <footer className="footer-container">
         <Typography variant="subheading" color="inherit">
             <p className="mb-0"> 
-              &copy; 2019-{new Date().getFullYear()} ZNTU, Inc. &middot; <a href="#">Facebook</a> &middot; <a href="#">Twitter</a>
+              &copy; {new Date().getFullYear()} ZNTU, Inc. &middot; <a href="#">Facebook</a> &middot; <a href="#">Twitter</a>
             </p>
             <div className="lang-buttons-container">
               <LanguageButtons />

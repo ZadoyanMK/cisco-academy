@@ -14,10 +14,12 @@ export class Header extends Component {
 
     this.state = {
       'en':{
-        courses: 'Courses'
+        courses: 'Courses',
+        about: 'About'
       },
       'ua': {
-        courses: 'Курси'
+        courses: 'Курси',
+        about: 'Про нас'
       } 
     }
   }
@@ -34,6 +36,11 @@ export class Header extends Component {
             <Typography variant="subheading" color="inherit" className="pt-1">
               <Link className="navbar-link header-link mr-1" to={"/" + this.props.lang + "/courses/"} >
                 { this.state[this.props.lang].courses }
+              </Link>
+            </Typography>
+            <Typography variant="subheading" color="inherit" className="pt-1 pl-3">
+              <Link className="navbar-link header-link mr-1" to={"/" + this.props.lang + "/about/"} >
+                { this.state[this.props.lang].about }
               </Link>
             </Typography>
             {/* {(() => {

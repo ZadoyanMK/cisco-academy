@@ -37,7 +37,7 @@ APPEND_SLASH = True
 SECRET_KEY = config.get('APP', 'secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # bool(config.get('APP', 'debug'))
+DEBUG = True # bool(config.get('APP', 'debug'))
 
 ALLOWED_HOSTS = config.get('APP', 'host').split(',')
 
