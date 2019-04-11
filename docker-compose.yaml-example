@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3'
 
 services:
   python: &python
@@ -11,8 +11,8 @@ services:
     volumes:
       - ./src:/src
     ports:
-      - 8000:8000
-    command: python manage.py runserver 0.0.0.0:8000
+      - 7000:7000
+    command: python manage.py runserver 0.0.0.0:7000
     networks:
       - cisco-zntu
     depends_on:
@@ -30,19 +30,19 @@ services:
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5432:5432"
+      - "5432:80"
     networks:
       - cisco-zntu
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@ciscozntu.edu.ua}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-adminpassword}
+      PGADMIN_DEFAULT_EMAIL: admin@ciscozntu.edu.ua
+      PGADMIN_DEFAULT_PASSWORD: adminpassword
     volumes:
       - pgadmin:/root/.pgadmin
     ports:
-      - "${PGADMIN_PORT:-5050}:80"
+      - "5050:5050"
     networks:
       - cisco-zntu
 #    restart: unless-stopped
