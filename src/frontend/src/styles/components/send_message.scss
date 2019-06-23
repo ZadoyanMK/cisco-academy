@@ -1,0 +1,52 @@
+// .submit-button > span{
+//     color: rgb(180, 1, 1);
+// }
+
+.open-mess-modal{
+    position: fixed;
+    right: 10px;
+    top: 85%;
+    z-index: 1;
+}
+// .button-open-mess-modal{
+//     background-color: #a00002 !important;
+//     &:hover{
+//         background-color: #520102 !important;
+//     }
+// }
+.modal-title {
+    background: rgb(22, 22, 22);
+    h2{
+        color: white;
+    }
+}
+// .form-dialog-main{
+//     max-width: 100% !important;
+//     min-width: 100px !important;
+// }
+.form-main{
+    // min-width: 100px;
+    min-height: 265px;
+}
+.dialog-view > div > div{
+    max-width: 600px;
+    margin: 5px !important;
+    min-height: 320px;
+}
+
+// .MuiDialog-paperWidthSm-125, .MuiDialog-paperWidthSm-131{
+//     max-width: 600px;
+//     margin: 5px !important;
+//     min-height: 320px;
+// }
+// .jss125{
+    
+// }
+// .MuiDialog-container-126{
+//     min-height: 410px;
+// }
+@media(max-width: 576px){
+    .open-mess-modal{
+        top: 80%;
+    }
+}

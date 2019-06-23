@@ -1,0 +1,26 @@
+.main-image{
+    height: 200px;
+    padding-top: 56.25%;
+}
+.card-actions{
+    margin-top: -40px;
+    display: flex;
+    padding: 0;
+}
+
+.card-content{
+    overflow-x: auto;
+}
+.creator-div{
+    margin-left: auto !important;
+    padding-right: 10px;
+    font-size: 13px !important;
+}
+.posts-container{
+    width: 100%;
+}
+.expand-button-block{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

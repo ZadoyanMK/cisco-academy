@@ -1,0 +1,193 @@
+.open-mess-modal {
+  position: fixed;
+  right: 10px;
+  top: 85%;
+  z-index: 1; }
+
+.modal-title {
+  background: #161616; }
+  .modal-title h2 {
+    color: white; }
+
+.form-main {
+  min-height: 265px; }
+
+.dialog-view > div > div {
+  max-width: 600px;
+  margin: 5px !important;
+  min-height: 320px; }
+
+@media (max-width: 576px) {
+  .open-mess-modal {
+    top: 80%; } }
+
+.pagination-block {
+  align-content: center !important;
+  justify-content: center;
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 80px;
+  font-size: 20px;
+  left: 0; }
+
+.active .page-link {
+  background: black !important;
+  border-color: #1d1d1d !important;
+  color: white; }
+
+.page-link {
+  color: black;
+  border-radius: 5px;
+  margin: 1px;
+  padding: 6px 10px 6px 10px !important;
+  width: 45px; }
+  .page-link:hover {
+    color: #5e5e5e !important; }
+
+@media (max-width: 992px) {
+  .pagination-block {
+    font-size: 15px; }
+  .page-link {
+    width: 40px; } }
+
+.main-image {
+  height: 200px;
+  padding-top: 56.25%; }
+
+.card-actions {
+  margin-top: -40px;
+  display: flex;
+  padding: 0; }
+
+.card-content {
+  overflow-x: auto; }
+
+.creator-div {
+  margin-left: auto !important;
+  padding-right: 10px;
+  font-size: 13px !important; }
+
+.posts-container {
+  width: 100%; }
+
+.expand-button-block {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%); }
+
+.courses-card {
+  width: 100%;
+  margin: 0 5px 5px 0px;
+  display: inline-block; }
+
+.courses-media {
+  height: 140px; }
+
+@media (min-width: 576px) {
+  .courses-card {
+    width: 250px; } }
+
+@media (min-width: 768px) {
+  .courses-card {
+    width: 300px; } }
+
+.form-dialog-main-course {
+  min-width: 400px; }
+
+.course-close-btn {
+  position: absolute !important;
+  bottom: 10px;
+  right: 10px; }
+
+.curse-close-button {
+  padding: 0 !important;
+  position: absolute !important;
+  right: 15px; }
+
+.course-card-content {
+  overflow-x: auto; }
+
+@media (min-width: 576px) {
+  .dialog-view-course > div > div {
+    min-width: 80%; } }
+
+.container-main {
+  padding-top: 3.5rem !important;
+  padding-bottom: 2.5rem; }
+
+.app-toolbar {
+  background-color: black !important; }
+
+.header-link {
+  color: white !important; }
+
+.header-main-link {
+  margin-left: 10px; }
+
+footer {
+  align-content: center !important;
+  justify-content: center;
+  display: flex;
+  position: absolute;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  background: black;
+  color: white; }
+
+.footer-container {
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 6px;
+  margin-top: 0px;
+  padding-top: 12px; }
+
+.lang-buttons-container {
+  display: flex;
+  justify-content: center; }
+
+.coming-soon-block {
+  align-content: center !important;
+  justify-content: center;
+  display: flex;
+  padding-top: 90px; }
+  .coming-soon-block:before {
+    content: "";
+    align-content: center !important;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background: url("./images/coming.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; }
+
+@media (min-width: 576px) {
+  .coming-soon-block:before {
+    width: 400px;
+    height: 265px; } }
+
+@media (min-width: 768px) {
+  .coming-soon-block:before {
+    width: 579px;
+    height: 401px; } }
+
+html {
+  height: 100%;
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  background-color: #e7e7e7; }

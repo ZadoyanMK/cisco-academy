@@ -1,0 +1,25 @@
+footer{
+    align-content: center !important;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    right: 0;
+    
+    left: 0;
+    padding: 1rem;
+    background: black;
+    color: white;
+    
+}
+
+.footer-container{
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 6px;
+    margin-top: 0px;
+    padding-top: 12px;
+}
+.lang-buttons-container{
+    display: flex;
+    justify-content: center;
+}
